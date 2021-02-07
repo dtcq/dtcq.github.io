@@ -13,8 +13,8 @@ temp[tonumber(date.year)][tonumber(date.month)] = temp[2020][6]
 
 local temp = ed.getDataTable("TitanToHeros")
 for k,v in pairs(temp) do
-	if v and v.TitanID >= 10117 then
-		temp[k] = nil
+	if v.TitanID >= 10117 then
+		v["OnlineTime"] = "2039/3/22 00:00:10"
 	end
 end
 
