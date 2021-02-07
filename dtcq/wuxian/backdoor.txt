@@ -92,18 +92,6 @@ end
 ed.ui.main.refreshGuildMountRedTag = function(self)
 end
 --
---ed.ui.mainres.res_pos.campcrystal = nil
---ed.ui.mainres.unlock_keys.campcrystal = nil
---ed.removeElementFromTable(ed.ui.mainres.button_key, "campcrystal")
---
-ed.ui.mainres.res_pos.campboss = nil
-ed.ui.mainres.unlock_keys.campboss = nil
-ed.removeElementFromTable(ed.ui.mainres.button_key, "campboss")
-ed.ui.main.doTeachCampBoss = function(self)
-end
-ed.ui.main.refreshCampBoss = function(self)
-end
---
 ed.ui.main.createIPTitanFca = function(self)
 end
 --
@@ -127,6 +115,14 @@ ed.removeElementFromTable(ed.ui.mainres.button_key, "mythland")
 ed.ui.mainres.unlock_keys.mythland = nil
 ed.ui.mainres.res_pos.mythland = nil
 --
+--
+ed.removeElementFromTable(ed.ui.mainres.button_key, "herorecycle")
+ed.ui.mainres.res_pos.herorecycle = nil
+--
+ed.ui.main.createMPDoublePointsIcon = function()
+end
+ed.ui.main.refreshMultiplaying = function()                                                                                                                    
+end
 
 
 --隐藏每周任务和挑战任务
