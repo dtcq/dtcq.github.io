@@ -131,6 +131,17 @@ end
 ed.ui.main.refreshMultiplaying = function()                                                                                                                    
 end
 --
+local oldFunc = ed.ui.main.getMainButtonHandler
+ed.ui.main.getMainButtonHandler = function(self, key)
+	if key == "key" then
+		return function()
+			ed.playEffect(ed.sound.building.feedBack)
+			ed.TitanNetwork:openPanel()
+		end		
+	end
+	return oldFunc(self, key)
+end
+--
 
 
 --隐藏每周任务和挑战任务
