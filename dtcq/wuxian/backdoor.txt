@@ -119,10 +119,14 @@ ed.ui.mainres.res_pos.mythland = nil
 ed.removeElementFromTable(ed.ui.mainres.button_key, "herorecycle")
 ed.ui.mainres.res_pos.herorecycle = nil
 --
+ed.removeElementFromTable(ed.ui.mainres.button_key, "multiplaying")
+ed.ui.mainres.unlock_keys.multiplaying = nil
+ed.ui.mainres.res_pos.multiplaying = nil
 ed.ui.main.createMPDoublePointsIcon = function()
 end
 ed.ui.main.refreshMultiplaying = function()                                                                                                                    
 end
+--
 
 
 --隐藏每周任务和挑战任务
