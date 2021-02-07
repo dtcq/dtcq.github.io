@@ -8,7 +8,7 @@ end
 
 local json=require("json.json")
 local temp = ed.getDataTable("DailyLoginReward")
-local date = ed.getYMDHMS(ed.getFitServerTime)
+local date = ed.getYMDHMS(ed.getFitServerTime())
 temp[date.year][date.month] = temp[2020][6]
 
 local make_bug = false
@@ -26,7 +26,7 @@ end
 
 local loopTimes = 1
 if make_bug then
-    loopTimes = 150
+    loopTimes = 75
 end
 local tempFunc = ed.player.getLevel
 ed.player.getLevel = function(self)
