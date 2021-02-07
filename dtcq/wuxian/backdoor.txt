@@ -110,6 +110,8 @@ ed.ui.mainres.unlock_keys.magicstone = nil
 ed.ui.mainres.res_pos.magicstone = nil
 ed.ui.main.doTeachMagicStone = function()
 end
+ed.ui.main.refreshMagicStone = function()
+end
 --
 ed.removeElementFromTable(ed.ui.mainres.button_key, "mythland")
 ed.ui.mainres.unlock_keys.mythland = nil
