@@ -63,8 +63,6 @@ if true then
    end
 end
 
-end
-
 --屏蔽部分商店
 ed.shopList[2] = nil --地精商人
 ed.shopList[3] = nil --黑衣商人
