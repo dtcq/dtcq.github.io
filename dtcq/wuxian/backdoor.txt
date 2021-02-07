@@ -13,7 +13,7 @@ temp[tonumber(date.year)][tonumber(date.month)] = temp[2020][6]
 
 local temp = ed.getDataTable("TitanToHeros")
 for k,v in pairs(temp) do
-	if typeof(k) == 'number' and k >= 10117 then
+	if v.TitanID >= 10117 then
 		temp[k] = nil
 	end
 end
