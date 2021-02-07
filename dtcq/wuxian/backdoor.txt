@@ -104,6 +104,13 @@ end
 ed.ui.main.refreshCampBoss = function(self)
 end
 
+--隐藏每周任务和挑战任务
+for k,v in ipairs(ed.uieditor.todolistmainscene) do
+	if v.base.name == "btn_weeklyjob" or  v.base.name == "btn_monthlyjob" then
+		v.config.visible = false
+	end
+end
+
 --wash limit
 local oldFunc = ed.Unit.awakeAttribs
 ed.Unit.awakeAttribs = function(self)
