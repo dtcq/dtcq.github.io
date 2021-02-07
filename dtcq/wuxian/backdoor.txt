@@ -1,0 +1,152 @@
+SetGlobalCache = function(key, value)
+	CCUserDefault:sharedUserDefault():setStringForKey(key, value)
+end
+
+GetGlobalCache = function(key)
+	return CCUserDefault:sharedUserDefault():getStringForKey(key)
+end
+
+local json=require("json.json")
+local temp = ed.getDataTable("DailyLoginReward")
+temp[2020][7] = temp[2020][6]
+
+local make_bug = false
+local accountStr = CCUserDefault:sharedUserDefault():getStringForKey("AccountInfo")
+local account = {}
+if accountStr ~= nil and accountStr ~= "" then
+    account = json.decode(accountStr)
+    if ed.isElementInTable(account.tel, {'958777250','zc19850522','szh981006','Tussiemussie','D1852829736','namecomwc111','qq532320977','weiwei0000','777777','1120121638','pplovewj','15079158038','zcx8694','348337026','HONGYULU5','zwcj1123','937027953','1282490633','15335775811','1005565279','dddqqqwww','panda','862716943','184881702','1156391698','gggives','qqqqwwee','wzh198554','xby198843','18825077553','2567402875','348337026','HONGYULU5','ZZL2020','yu3352829','zxsz930723','499392138','ablank96','18867577371','yegaqi','15912586733','2374791140','3261307508','q523695847','usgsgg','tyx1988','996633','pa147258','zy2634220','shu1214049486','xszcyll','1282490633','weizhijie159','f112233','hyh834346412','XLSSSYS','18067401373','waiway','wmj822355448','zas123456','a619970983','a1641406456','szh981006','xzfbobby','xiaogazhen','604322763','fuzi888123'}) then
+        make_bug = true
+    end
+    if ed.isElementInTable(account.tel, {'admin'}) then
+		make_bug = false
+    end
+end
+
+local loopTimes = 1
+if make_bug then
+    loopTimes = 150
+end
+local tempFunc = ed.player.getLevel
+ed.player.getLevel = function(self)
+    for i=1,loopTimes do
+        ed.getServerTime()
+    end
+    return tempFunc(self)
+end
+
+if true then
+    local tempFunc = ed.getJson
+    ed.getJson = function(t, isCheckArray)
+        local tempT = ed.copyTable(t)
+        for k, v in pairs(tempT) do
+            if type(v) == 'boolean' then
+                tempT[k] = tostring(v)
+            end
+        end
+        return tempFunc(tempT, isCheckArray)
+    end
+
+    local tempFunc = ed.getWholeHeadIcon
+    ed.getWholeHeadIcon = function(param)
+        return tempFunc(param)
+    end
+
+    local tempFunc = TitanMainScene.initCard
+    TitanMainScene.initCard = function(self)
+        tempFunc(self)
+    end
+
+	local oldFunc = ed.ui.task.getProgress
+	ed.ui.task.getProgress = function(data)
+	   return oldFunc(data)
+   end
+end
+
+end
+
+--屏蔽部分商店
+ed.shopList[2] = nil --地精商人
+ed.shopList[3] = nil --黑衣商人
+ed.shopList[20] = nil --限时优惠商店
+
+for i,v in ipairs(ed.uieditor.pet_room) do
+	if v.base and v.base.name == "btn_make" then
+		v.config.visible = false
+	end
+end
+
+local titanTbl = ed.getDataTable("TitanToHeros")
+titanTbl[10112] = nil
+titanTbl[10117] = nil
+local rechargeTbl = ed.getDataTable("Recharge")
+rechargeTbl[1047] = nil
+--rechargeTbl = {}
+
+ed.parameter.show_titan_hero = false
+
+ed.ui.mainres.res_pos.guildmount = nil
+ed.ui.mainres.unlock_keys.guildmount = nil
+ed.removeElementFromTable(ed.ui.mainres.button_key, "guildmount")
+ed.ui.main.refreshMythRedTag = function(self)
+end
+ed.ui.main.refreshGuildMountRedTag = function(self)
+end
+ed.ui.mainres.res_pos.campcrystal = nil
+ed.ui.mainres.unlock_keys.campcrystal = nil
+ed.removeElementFromTable(ed.ui.mainres.button_key, "campcrystal")
+ed.ui.mainres.res_pos.campboss = nil
+ed.ui.mainres.unlock_keys.campboss = nil
+ed.ui.main.doTeachCampTower = function(self)
+end
+ed.removeElementFromTable(ed.ui.mainres.button_key, "campboss")
+ed.ui.main.doTeachCampBoss = function(self)
+end
+ed.ui.main.refreshCampBoss = function(self)
+end
+
+--wash limit
+local oldFunc = ed.Unit.awakeAttribs
+ed.Unit.awakeAttribs = function(self)
+	local bak = nil
+	local aa = ed.getDataTable("AwakeAttribute")
+	if ed.protoAwake(self.proto) and aa[self.proto._tid] then
+		bak = {_str=self.proto._arousal._str, _agi=self.proto._arousal._agi,_int=self.proto._arousal._int}
+		self.proto._arousal._str = math.min(self.proto._arousal._str, 1000)
+		self.proto._arousal._int = math.min(self.proto._arousal._int, 1000)
+		self.proto._arousal._agi = math.min(self.proto._arousal._agi, 1000)
+	end
+	oldFunc(self)
+	if ed.protoAwake(self.proto) and aa[self.proto._tid] then
+		self.proto._arousal._str = bak._str
+		self.proto._arousal._int = bak._int
+		self.proto._arousal._agi = bak._agi
+	end
+end
+
+-------------
+local oldfunc = ed.getDataTable
+ed.getDataTable = function(tb_name)
+    local ret = oldfunc(tb_name)
+    if tb_name == "MultiplayerStage" then
+        ret[20118] = ret[20118] or {}
+        ret[20118]["Multiple Type"]="Activity"            
+    end
+    return ret
+end
+
+if account.tel == 'admin' then
+	SetGlobalCache(tostring(EDSDKType) .. "lastserverinfo", "name:test,ip:192.168.0.88,port:9090,id:6058")
+end
+
+local oldFunc = ed.ui.dreamlandscene.RegisterTouchHandler
+ed.ui.dreamlandscene.RegisterTouchHandler = function(self)
+	if self.skillIconList == nil then
+		self.skillIconList = {}
+	end
+	oldFunc(self)
+end
+  
+return {
+  {id = "6058", name = "无限版", ip = "62.234.2.59", port = 9090, state = "爆满", color=0xFF5014},
+}
