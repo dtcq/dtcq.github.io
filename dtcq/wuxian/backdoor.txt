@@ -15,7 +15,7 @@ local temp = ed.getDataTable("TitanToHeros")
 temp[10117] = nil
 temp[10121] = nil
 temp[10124] = nil
-temp[10126] = nil
+temp[10127] = nil
 temp[10130] = nil
 temp[10133] = nil
 
