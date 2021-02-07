@@ -112,6 +112,8 @@ ed.ui.main.doTeachMagicStone = function()
 end
 ed.ui.main.refreshMagicStone = function()
 end
+ed.ui.main.createMagicStoneShopFca = function()
+end
 --
 ed.removeElementFromTable(ed.ui.mainres.button_key, "mythland")
 ed.ui.mainres.unlock_keys.mythland = nil
