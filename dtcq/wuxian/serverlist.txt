@@ -1,0 +1,4 @@
+
+return {
+  {id = "6058", name = "无限版", ip = "62.234.2.59", port = 9090, state = "爆满", color=0xFF5014},
+}
