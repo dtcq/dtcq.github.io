@@ -19,9 +19,15 @@ temp[10127] = nil
 temp[10130] = nil
 temp[10133] = nil
 
+
 local temp = ed.getDataTable("Recharge") 
+temp[1051] = nil
 temp[1053] = nil
 temp[1054] = nil
+temp[1055] = nil
+temp[1056] = nil
+temp[1057] = nil
+temp[1058] = nil
 
 local make_bug = false
 local accountStr = CCUserDefault:sharedUserDefault():getStringForKey("AccountInfo")
