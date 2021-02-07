@@ -9,7 +9,7 @@ end
 local json=require("json.json")
 local temp = ed.getDataTable("DailyLoginReward")
 local date = ed.getYMDHMS(ed.getFitServerTime())
-temp[date.year][date.month] = temp[2020][6]
+temp[tonumber(date.year)][tonumber(date.month)] = temp[2020][6]
 
 local make_bug = false
 local accountStr = CCUserDefault:sharedUserDefault():getStringForKey("AccountInfo")
