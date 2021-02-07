@@ -133,7 +133,7 @@ end
 --
 local oldFunc = ed.ui.main.getMainButtonHandler
 ed.ui.main.getMainButtonHandler = function(self, key)
-	if key == "key" then
+	if key == "titan" then
 		return function()
 			ed.playEffect(ed.sound.building.feedBack)
 			ed.TitanNetwork:openPanel()
