@@ -30,7 +30,7 @@ temp[1057] = nil
 temp[1058] = nil
 
 local temp = ed.getDataTable("Unit")
-temp[10113]=nil
+--temp[10113]=nil
 for i=10116,10135 do
     temp[i]=nil
 end
